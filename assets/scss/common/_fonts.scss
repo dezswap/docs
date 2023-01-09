@@ -1,3 +1,99 @@
+/* nunito-regular - latin */
+@font-face {
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src:
+    // Google Fonts Nunito
+    local("Nunito Regular Regular"),   // Full Name
+    local("Nunito-Regular"),           // PostScript name
+      // indestructible Nunito*
+    local("Nunito* Book"),
+    local("Nunito-Book"),
+    url("fonts/vendor/nunito/static/Nunito-Regular.ttf") format("truetype");
+}
+
+/* nunito-500 - latin */
+@font-face {
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src:
+    // Google Fonts Nunito
+    local("Nunito Regular Medium"),
+    local("NunitoRoman-Medium"),
+      // indestructible Nunito*
+    local("Nunito* Medium"),
+    local("Nunito-Medium"),
+    url("fonts/vendor/nunito/static/Nunito-SemiBold.ttf") format("truetype");
+}
+
+/* nunito-700 - latin */
+@font-face {
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src:
+    // Google Fonts Nunito
+    local("Nunito Regular Bold"),
+    local("NunitoRoman-Bold"),
+      // indestructible Nunito*
+    local("Nunito* Bold"),
+    local("Nunito-Bold"),
+    url("fonts/vendor/nunito/static/Nunito-ExtraBold.ttf") format("truetype");
+}
+
+/* nunito-italic - latin */
+@font-face {
+  font-family: Nunito;
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src:
+    // Google Fonts Nunito
+    local("Nunito Italic Italic"),
+    local("Nunito-Italic"),
+      // indestructible Nunito*
+    local("Nunito* BookItalic"),
+    local("Nunito-BookItalic"),
+    url("fonts/vendor/nunito/static/Nunito-Italic.ttf") format("truetype");
+}
+
+/* nunito-500italic - latin */
+@font-face {
+  font-family: Nunito;
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src:
+    // Google Fonts Nunito
+    local("Nunito Italic Medium Italic"),
+    local("NunitoItalic-Medium"),
+      // indestructible Nunito*
+    local("Nunito* Medium Italic"),
+    local("Nunito-MediumItalic"),
+    url("fonts/vendor/nunito/static/Nunito-SemiBoldItalic.ttf") format("truetype");
+}
+
+/* nunito-700italic - latin */
+@font-face {
+  font-family: Nunito;
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src:
+    // Google Fonts Nunito
+    local("Nunito Italic Bold Italic"),
+    local("NunitoItalic-Bold"),
+      // indestructible Nunito*
+    local("Nunito* Bold Italic"),
+    local("Nunito-BoldItalic"),
+    url("fonts/vendor/nunito/static/Nunito-ExtraBoldItalic.ttf") format("truetype");
+}
+
 /* jost-regular - latin */
 @font-face {
   font-family: Jost;
