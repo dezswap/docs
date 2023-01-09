@@ -3,7 +3,7 @@
 ## Homepage
 title = "Dezswap"
 titleSeparator = "-"
-titleAddition = "Modern Documentation Theme"
+titleAddition = ""
 description = "Doks is a Hugo theme for building secure, fast, and SEO-ready documentation websites, which you can easily update and customize."
 
 ## Documentation
@@ -82,7 +82,7 @@ repoHost = "GitHub"
 docsRepo = "https://github.com/dezswap/docs"
 docsRepoBranch = "main"
 docsRepoSubPath = ""
-editPage = false
+editPage = true
 lastMod = false
 
 [sections]

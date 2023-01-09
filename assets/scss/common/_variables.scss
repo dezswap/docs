@@ -30,6 +30,11 @@ $color-btn-bg: $pink-500;
 $color-btn-border: darken($pink-500, 5%);
 $color-btn-text: $white;
 
+$dezswap-background: #FFD2D9;
+$dezswap-haze: lighten($dezswap-background, 5%);
+$dezswap-primary: #0129BD;
+$dezswap-secondary: #8875f8;
+
 // Options
 //
 // Quickly modify global styling by enabling or disabling optional features.
@@ -63,14 +68,14 @@ $navbar-light-toggler-icon-bg: none;
 //
 // Settings for the `<body>` element.
 
-$body-bg:                   $white;
+$body-bg:                   $dezswap-background;
 $body-color:                $black;
 
 // Links
 //
 // Style anchor elements.
 
-$link-color:                              $primary;
+$link-color:                              $dezswap-primary;
 $link-decoration:                         none;
 
 // Grid containers
