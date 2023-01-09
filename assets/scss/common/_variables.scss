@@ -30,6 +30,14 @@ $color-btn-bg: $pink-500;
 $color-btn-border: darken($pink-500, 5%);
 $color-btn-text: $white;
 
+// Dezswap
+$dezswap: #FFD2D9;
+$dezswap-haze: lighten($dezswap, 5%);
+$dezswap-primary: #0129BD;
+$dezswap-secondary: #8875f8;
+$dezswap-darken: darken($dezswap, 5%);
+$primary: $dezswap-primary;
+
 // Options
 //
 // Quickly modify global styling by enabling or disabling optional features.
@@ -63,7 +71,7 @@ $navbar-light-toggler-icon-bg: none;
 //
 // Settings for the `<body>` element.
 
-$body-bg:                   $white;
+$body-bg:                   $dezswap;
 $body-color:                $black;
 
 // Links
@@ -188,3 +196,103 @@ $dropdown-config: (
 );
 
 $input-btn-focus-width:       0;
+
+// Dezswap
+
+body .navbar {
+  background-color: rgba(255, 210, 217, 0.95);
+  border-bottom: 1px solid $dezswap-darken;
+}
+
+body .offcanvas-header {
+  border-bottom: 1px solid $dezswap-darken;
+}
+
+body .footer {
+  border-top: 1px solid $dezswap-darken;
+}
+
+body .docs-navigation {
+  border-top: 1px solid $dezswap-darken;
+}
+
+body .page-links li:not(:first-child) {
+  border-top: 1px dashed $dezswap-darken;
+}
+
+body .docs-sidebar {
+  border-right: 1px solid $dezswap-darken;
+}
+
+body pre code::-webkit-scrollbar-thumb {
+  background: $dezswap-secondary;
+}
+
+body pre code:hover {
+  scrollbar-width: thin;
+  scrollbar-color: $dezswap-secondary transparent;
+}
+
+body pre code::-webkit-scrollbar-thumb:hover {
+  background: $dezswap-secondary;
+}
+
+body .docs-links,
+body .docs-toc {
+  scrollbar-width: thin;
+  scrollbar-color: $dezswap;
+}
+
+body .docs-links::-webkit-scrollbar-track,
+body .docs-toc::-webkit-scrollbar-track {
+  background: $dezswap;
+}
+
+body .docs-links::-webkit-scrollbar-thumb,
+body .docs-toc::-webkit-scrollbar-thumb {
+  background: $dezswap;
+}
+
+body .docs-links:hover::-webkit-scrollbar-thumb,
+body .docs-toc:hover::-webkit-scrollbar-thumb {
+  background: $dezswap-secondary;
+}
+
+body .docs-links::-webkit-scrollbar-thumb:hover,
+body .docs-toc::-webkit-scrollbar-thumb:hover {
+  background: $dezswap-secondary;
+}
+
+body .form-control.is-search {
+  background: $dezswap-haze;
+}
+
+body .card {
+  background-color: $dezswap-haze;
+  border-color: $dezswap-darken;
+}
+
+body code {
+  background: $dezswap-haze;
+}
+
+body .hljs {
+  background: $dezswap-haze;
+}
+
+body .offcanvas {
+  background-color: $dezswap;
+}
+
+body .btn-menu:hover {
+  color: $dezswap-primary;
+  background: transparent;
+}
+
+body .btn-toggle:before {
+  content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%230129BD' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 14l6-6-6-6'/%3e%3c/svg%3e");
+}
+
+body .alert-doks {
+  background-color: $dezswap-haze;
+}
