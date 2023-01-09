@@ -1,7 +1,7 @@
 # Meta Data for SEO
 
 ## Homepage
-title = "Doks"
+title = "Dezswap"
 titleSeparator = "-"
 titleAddition = "Modern Documentation Theme"
 description = "Doks is a Hugo theme for building secure, fast, and SEO-ready documentation websites, which you can easily update and customize."
@@ -10,10 +10,10 @@ description = "Doks is a Hugo theme for building secure, fast, and SEO-ready doc
 # docsVersion = "0.3"
 
 ## Open Graph
-images = ["doks.png"]
+images = ["dezswap-primary-logo.png"]
 ogLocale = "en_US"
-domainTLD = "doks.netlify.app"
-titleHome = "Doks Theme"
+domainTLD = "docs.dezswap.io"
+titleHome = "Dezswap Documentation"
 
 ## Twitter Cards
 twitterSite = ""
@@ -65,10 +65,10 @@ defaultImage = "default-image.png" # put in `./assets/images/`
 fillImage = "1270x740 Center" # normalize image size
 
 # Footer
-footer = "Powered by <a class=\"text-muted\" href=\"https://www.netlify.com/\">Netlify</a>, <a class=\"text-muted\" href=\"https://gohugo.io/\">Hugo</a>, and <a class=\"text-muted\" href=\"https://getdoks.org/\">Doks</a>"
+footer = "Powered by <a class=\"text-muted\" href=\"https://delightlabs.io/\">DELIGHT</a>"
 
 # Feed
-copyRight = "Copyright (c) 2020-2021 Henk Verlinde"
+copyRight = "Copyright (c) 2022 DELIGHT "
 
 # Alert
 alert = false
@@ -79,14 +79,14 @@ alertText = "Introducing the Doks child theme, several DX + UX updates, and more
 # Edit Page
 # repoHost [Github | Gitea | GitLab | Bitbucket | BitbucketServer ] is used for building the edit link based on git hoster
 repoHost = "GitHub"
-docsRepo = "https://github.com/DELIGHT-LABS/hugo-theme-doks"
+docsRepo = "https://github.com/dezswap/docs"
 docsRepoBranch = "main"
 docsRepoSubPath = ""
 editPage = false
 lastMod = false
 
 [sections]
-  sectionNav = ["docs", "guides"]
+  sectionNav = ["docs" ]
 
 [options]
   lazySizes = true
@@ -95,7 +95,7 @@ lastMod = false
   flexSearch = true
   searchSectionsShow = []
   searchSectionsIndex = []
-  darkMode = true
+  darkMode = false
   bootStrapJs = true
   breadCrumb = false
   highLight = true
