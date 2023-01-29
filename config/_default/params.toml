@@ -4,16 +4,16 @@
 title = "Dezswap"
 titleSeparator = "-"
 titleAddition = ""
-description = "Doks is a Hugo theme for building secure, fast, and SEO-ready documentation websites, which you can easily update and customize."
+description = "Technical documentation for the Dezswap"
 
 ## Documentation
 # docsVersion = "0.3"
 
 ## Open Graph
-images = ["dezswap-primary-logo.png"]
+images = ["dezswap-opengraph-image.jpg"]
 ogLocale = "en_US"
 domainTLD = "docs.dezswap.io"
-titleHome = "Dezswap Documentation"
+titleHome = "Dezswap Docs"
 
 ## Twitter Cards
 twitterSite = ""

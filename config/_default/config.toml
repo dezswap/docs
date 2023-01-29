@@ -1,4 +1,4 @@
-baseurl = "https://docs.dezswap.io/"
+baseurl = "https://docs-v2-dezswap.netlify.app/"
 canonifyURLs = false
 disableAliases = true
 disableHugoGeneratorInject = true
