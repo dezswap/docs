@@ -224,8 +224,9 @@ body .docs-sidebar {
   border-right: 1px solid $dezswap-darken;
 }
 
-body pre code::-webkit-scrollbar-thumb {
-  background: $dezswap-secondary;
+body pre code {
+  scrollbar-width: thin;
+  scrollbar-color: $dezswap-secondary transparent;
 }
 
 body pre code:hover {
@@ -233,34 +234,50 @@ body pre code:hover {
   scrollbar-color: $dezswap-secondary transparent;
 }
 
+body pre code::-webkit-scrollbar-thumb {
+  background: $dezswap-secondary;
+  border-radius: 30px;
+}
+
+
 body pre code::-webkit-scrollbar-thumb:hover {
   background: $dezswap-secondary;
+  border-radius: 30px;
 }
 
 body .docs-links,
 body .docs-toc {
   scrollbar-width: thin;
-  scrollbar-color: $dezswap;
+  scrollbar-color: $dezswap-secondary transparent;
+}
+
+body .docs-links:hover,
+body .docs-toc:hover {
+  scrollbar-width: thin;
+  scrollbar-color: $dezswap-secondary transparent;
 }
 
 body .docs-links::-webkit-scrollbar-track,
 body .docs-toc::-webkit-scrollbar-track {
-  background: $dezswap;
+  background: transparent;
 }
 
 body .docs-links::-webkit-scrollbar-thumb,
 body .docs-toc::-webkit-scrollbar-thumb {
-  background: $dezswap;
+  background: $dezswap-secondary;
+  border-radius: 30px;
 }
 
 body .docs-links:hover::-webkit-scrollbar-thumb,
 body .docs-toc:hover::-webkit-scrollbar-thumb {
   background: $dezswap-secondary;
+  border-radius: 30px;
 }
 
 body .docs-links::-webkit-scrollbar-thumb:hover,
 body .docs-toc::-webkit-scrollbar-thumb:hover {
   background: $dezswap-secondary;
+  border-radius: 30px;
 }
 
 body .form-control.is-search {
