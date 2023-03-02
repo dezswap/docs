@@ -3,6 +3,30 @@ title: About
 weight: 10
 ---
 
+{{< alert >}}
+**Normal**
+
+STARFLEIT is ...
+{{< /alert >}}
+
+{{< alert context="info" >}}
+**Info**
+
+STARFLEIT is ...
+{{< /alert >}}
+
+{{< alert context="warning" >}}
+**Warning**
+
+STARFLEIT is ...
+{{< /alert >}}
+
+{{< alert context="danger" >}}
+**Danger**
+
+STARFLEIT is ...
+{{< /alert >}}
+
 **Dezswap** is a [Uniswap](https://uniswap.org/)-inspired automated market-maker (AMM) protocol implemented with smart contracts on the XPLA Chain. This enables a decentralized on-chain exchange for the various assets involved in XPLA Chain's ecosystem.
 
 ## Participants
