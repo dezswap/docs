@@ -224,6 +224,26 @@ body .docs-sidebar {
   border-right: 1px solid $dezswap-darken;
 }
 
+html {
+  scrollbar-width: thin;
+  scrollbar-color: $dezswap-secondary transparent;
+}
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: $dezswap-secondary transparent;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: $dezswap-secondary;
+  border-radius: 30px;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  background: $dezswap-secondary;
+  border-radius: 30px;
+}
+
 body pre code {
   scrollbar-width: thin;
   scrollbar-color: $dezswap-secondary transparent;
@@ -238,7 +258,6 @@ body pre code::-webkit-scrollbar-thumb {
   background: $dezswap-secondary;
   border-radius: 30px;
 }
-
 
 body pre code::-webkit-scrollbar-thumb:hover {
   background: $dezswap-secondary;
