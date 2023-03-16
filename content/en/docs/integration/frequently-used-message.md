@@ -38,7 +38,8 @@ If you are trying to provide cw20 token, increase your allowance first. [Execute
         "amount": "10"
       }
     ],
-    "deadline": 123123 // optional
+    "deadline": 123123, // optional
+    "slippage_tolerance": "0.005" // optional
   }
 }
 ```

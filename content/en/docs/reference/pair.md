@@ -34,7 +34,8 @@ The asset can be both a contract-based token and a native token. It can be disti
       }
     ],
     "receiver": "<Addr>", // optional, LP token receiver
-    "deadline": 123123 // optional, unix epoch
+    "deadline": 123123, // optional, unix epoch
+    "slippage_tolerance": "0.005" // optional
   }
 }
 ```
