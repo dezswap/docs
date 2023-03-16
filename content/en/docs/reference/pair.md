@@ -15,7 +15,7 @@ Send user's assets to a **Dezswap** contract in order to provide liquidity.<br /
 - Please read [provide initial liquidity]({{< relref "/docs/integration/create-your-own-pair#provide-initial-liquidity" >}}) carefully so that you can recognize the minimum liquidity deduction if you're the initial provider for the pair.
 {{< /alert >}}
 
-The asset can be both a contract-based token and a native token and the key under `info`: `token` and `native_token` distinguish them.
+The asset can be both a CW20 token and a native token(including IBC token) and the key under `info`: `token` and `native_token` distinguish them.
 
 ```json
 {

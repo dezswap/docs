@@ -41,11 +41,9 @@ The JSON message format is as follows:
 }
 ```
 
-This is a JSON constructor of pair contract.
-
-- A token pair can be either, contract-based token, or XPLA Chain native / IBC token
-  - `assets[x].info.token.contract_addr`: Contract-based token *address* is entered here.
-  - `assets[x].info.native_token.denom`: XPLA Chain native / IBC token *denominator* is entered here.
+This is a JSON constructor of pair contract. Tokens of pair can be either CW20 tokens or XPLA Chain native tokens(including IBC tokens). Use JSON keys with their corresponding values as described below.
+- `assets[x].info.token.contract_addr`: CW20 token *address*
+- `assets[x].info.native_token.denom`: XPLA Chain native token(including IBC token) *denominator*
 
 Then, you may execute the contract with the organized JSON above.
 
