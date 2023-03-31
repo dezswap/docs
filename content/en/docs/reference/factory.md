@@ -4,7 +4,7 @@ weight: 10
 ---
 
 The factory contract registers a pair between two tokens.
-It uses the pre-stored pair contract binary and instantiates it so that users do not need to execute a pair contract by themselves.
+It uses the pre-stored pair contract binary and instantiates it so that users can create a pair contract with ease.
 
 ## Transaction
 
@@ -15,16 +15,22 @@ Instantiate a pair from uploaded WASM binary. You may follow JSON attribute by t
 ```json
 {
   "create_pair": {
-    "asset_infos": [
+    "assets": [
       {
-        "token": {
-          "contract_addr": "xpla1..."
-        }
+        "info": {
+          "token": {
+            "contract_addr": "xpla1..."
+          }
+        },
+        "amount": "0"
       },
       {
-        "native_token": {
-          "denom": "axpla"
-        }
+        "info": {
+          "native_token": {
+            "denom": "axpla"
+          }
+        },
+        "amount": "0"
       }
     ]
   }
@@ -88,7 +94,7 @@ Select all pairs
 ```json
 {
     "pairs": {
-        "limit": 10 // STRONGLY RECOMMEND, optional, default=10, max=30
+        "limit": 10 // STRONGLY RECOMMENDED, optional, default=10, max=30
     }
 }
 ```
