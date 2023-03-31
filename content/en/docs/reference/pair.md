@@ -39,7 +39,8 @@ The asset can be both a CW20 token and a native token(including IBC token) and t
       }
     ],
     "receiver": "<Addr>", // optional, LP token receiver
-    "deadline": 123123 // optional, unix epoch
+    "deadline": 123123, // optional, unix epoch
+    "slippage_tolerance": "0.005" // optional
   }
 }
 ```
