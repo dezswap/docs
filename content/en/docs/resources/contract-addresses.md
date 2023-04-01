@@ -16,10 +16,3 @@ Token code id: 110
 |--------------------------|-------------------------------------------------------------------|
 | Factory contract address | `xpla1j4kgjl6h4rt96uddtzdxdu39h0mhn4vrtydufdrk4uxxnrpsnw2qug2yx2` |
 | Router contract address  | `xpla1pr40depxf8w50y58swdyhc0s2yjptd2xtqgnyfvkz6k40ng53gqqnyftkm` |
-
-## Hypercube Testnet
-Token code id: 110
-| Description              | Address                                                           |
-|--------------------------|-------------------------------------------------------------------|
-| Factory contract address | `xpla1j4kgjl6h4rt96uddtzdxdu39h0mhn4vrtydufdrk4uxxnrpsnw2qug2yx2` |
-| Router contract address  | `xpla1pr40depxf8w50y58swdyhc0s2yjptd2xtqgnyfvkz6k40ng53gqqnyftkm` |
