@@ -54,9 +54,9 @@ Execute the below message via the *Liquidity token contract* address! Not token 
 {
   "send": {
     "contract": "<PairContractAddress>",
-    "amount": 123,
+    "amount": "123",
     "msg": "<base64-encodedStringOfWithdrawMsg>"
-  },
+  }
 }
 ```
 
