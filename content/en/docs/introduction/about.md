@@ -3,7 +3,7 @@ title: About
 weight: 10
 ---
 
-**Dezswap** is a [Uniswap](https://uniswap.org/)-inspired automated market-maker (AMM) protocol implemented with smart contracts on the XPLA Chain. This enables a decentralized on-chain exchange for the various assets involved in XPLA Chain's ecosystem.
+**Dezswap** is a [Uniswap](https://uniswap.org/)-inspired automated market-maker (AMM) protocol implemented with smart contracts on the XPLA Chain. This enables a decentralized on-chain exchange for the various assets involved in XPLA Chain's ecosystem. Dezswap is an open source and an open API. Anyone can fork the code through Github. And any Dapp can use the deployed API on XPLA chain. Please check the contract address in the [Resources]({{< relref "/docs/resources/contract-addresses" >}}).
 
 ## Participants
 
