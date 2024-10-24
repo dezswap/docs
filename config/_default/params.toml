@@ -65,10 +65,10 @@ defaultImage = "default-image.png" # put in `./assets/images/`
 fillImage = "1270x740 Center" # normalize image size
 
 # Footer
-footer = "Powered by <a class=\"text-muted\" href=\"https://delightlabs.io/\">DELIGHT</a>"
+footer = "Powered by <a class=\"text-muted\" href=\"https://delightlabs.io/\">DELIGHT LABS (Lowkey Codes Ltd.)</a>"
 
 # Feed
-copyRight = "Copyright (c) 2022 DELIGHT "
+copyRight = "Copyright (c) 2022 DELIGHT (Lowkey Codes Ltd.)"
 
 # Alert
 alert = false
