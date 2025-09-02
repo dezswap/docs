@@ -1,6 +1,6 @@
 ---
 title: Terms of Service
-weight: 50
+weight: 60
 ---
 
 These Terms of Service (the “Agreement”) explain the terms and conditions by which you may access and use [Dezswap Web Application](https://app.dezswap.io), a website-hosted user interface (the “Interface” or “App”) provided by [DELIGHT LABS (Lowkey Codes Ltd.)](https://delightlabs.io) (“we”, “our”, or “us”). You must read this Agreement carefully as it governs your use of the Interface. By accessing or using the Interface, you signify that you have read, understand, and agree to be bound by this Agreement in its entirety. If you do not agree, you are not authorized to access or use the Interface and should not use the Interface.
