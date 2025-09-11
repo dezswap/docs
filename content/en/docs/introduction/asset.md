@@ -23,7 +23,7 @@ pub enum AssetInfo {
 
 - **Denominator**: The native token of XPLA Chain as `axpla`
 - **IBC tokens**: External chain tokens transferred through Inter-Blockchain Communication in the form of `ibc/<denom_hash>`
-- **ERC-20 tokens**: Ethereum-based tokens represented in the XPLA bank module as `erc20:<token_address>`
+- **ERC-20 tokens**: Ethereum-based tokens represented in the XPLA bank module as `xerc20:<token_address>`
 
 Native Tokens are managed directly at the blockchain level without separate smart contracts, and transfers and balance management are handled through the Cosmos SDK's bank module.
 
