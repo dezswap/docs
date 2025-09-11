@@ -41,15 +41,15 @@ The JSON message format is as follows:
 }
 ```
 
-This is a JSON constructor of pair contract. Tokens of pair can be either CW20 tokens or XPLA Chain native tokens(including IBC tokens). Use JSON keys with their corresponding values as described below.
-- `assets[x].info.token.contract_addr`: CW20 token *address*
-- `assets[x].info.native_token.denom`: XPLA Chain native token(including IBC token) *denominator*
+This is a JSON constructor of pair contract. Tokens of pair can be either CW20 tokens or XPLA Chain native tokens(including IBC and ERC20 tokens). Use JSON keys with their corresponding values as described below.
+- `assets[x].info.token.contract_addr`: CW20 token **address**
+- `assets[x].info.native_token.denom`: XPLA Chain native token(including IBC and ERC20 token) **denominator**
 
 Then, you may execute the contract with the organized JSON above.
 
 ## Token Register For Dezswap
 
->If you want to register a brand-new XPLA Chain native or IBC token that are not listed yet, please find Dezswap team on [#Dezswap discord](https://discord.gg/ZQ2ps5H64t) (for metadata)
+>If you want to register a brand-new XPLA Chain native token that are not listed yet, please find Dezswap team on [#Dezswap discord](https://discord.gg/ZQ2ps5H64t) (for metadata)
 
 ## Provide initial liquidity
 

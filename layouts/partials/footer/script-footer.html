@@ -7,71 +7,79 @@
 {{ $highlight := resources.Get "js/highlight.js" -}}
 {{ $highlight := $highlight | js.Build -}}
 
-{{ $katex := resources.Get "js/vendor/katex/dist/katex.js" -}}
-{{ $katexAutoRender := resources.Get "js/vendor/katex/dist/contrib/auto-render.js" -}}
+{{ $katex := resources.Get "js/katex.js" -}}
+{{ $katexAutoRender := resources.Get "js/katex.js" -}}
 
-{{ $mermaid := resources.Get "js/mermaid.js" | js.Build -}}
+{{ $mermaid := resources.Get "js/mermaid.js" -}}
 
 {{ $app := resources.Get "js/app.js" -}}
 
 {{ $slice := slice $app -}}
 
+{{ $lazySizes := "" -}}
 {{ if .Site.Params.options.lazySizes -}}
-  {{ $lazySizes := resources.Get "js/lazysizes.js" -}}
-  {{ $lazySizes := $lazySizes | js.Build -}}
+  {{ $lazySizes = resources.Get "js/lazysizes.js" -}}
+  {{ $lazySizes = $lazySizes | js.Build -}}
   {{ $slice = $slice | append $lazySizes -}}
 {{ end -}}
 
+{{ $clipBoard := "" -}}
 {{ if .Site.Params.options.clipBoard -}}
-  {{ $clipBoard := resources.Get "js/clipboard.js" -}}
-  {{ $clipBoard := $clipBoard | js.Build -}}
+  {{ $clipBoard = resources.Get "js/clipboard.js" -}}
+  {{ $clipBoard = $clipBoard | js.Build -}}
   {{ $slice = $slice | append $clipBoard -}}
 {{ end -}}
 
+{{ $instantPage := "" -}}
 {{ if .Site.Params.options.instantPage -}}
-  {{ $instantPage := resources.Get "js/instant.page.js" -}}
-  {{ $instantPage := $instantPage | js.Build -}}
+  {{ $instantPage = resources.Get "js/instant.page.js" -}}
+  {{ $instantPage = $instantPage | js.Build -}}
   {{ $slice = $slice | append $instantPage -}}
 {{ end -}}
 
 {{ $showFlexSearch := .Site.Params.options.flexSearch }}
 
+{{ $flexSearch := "" -}}
 {{ if $showFlexSearch -}}
-  {{ $flexSearch := resources.Get "js/vendor/flexsearch/dist/flexsearch.bundle.js" -}}
-  {{ $slice = $slice | append $flexSearch -}}
+  {{ $flexSearch = resources.Get "js/flexsearch.js" -}}
+  {{ if $flexSearch -}}
+    {{ $slice = $slice | append $flexSearch -}}
+  {{ end -}}
   {{ if and (isset .Site.Params.options "searchsectionsshow") (not (eq .Site.Params.options.searchSectionsShow "ALL")) -}}
   {{ $showFlexSearch = or (eq (len .Site.Params.options.searchSectionsShow) 0) (in .Site.Params.options.searchSectionsShow .Section) (and .IsHome (in .Site.Params.options.searchSectionsShow "HomePage")) -}}
   {{ end -}}
 {{ end -}}
 
+{{ $darkMode := "" -}}
 {{ if .Site.Params.options.darkMode -}}
-  {{ $darkMode := resources.Get "js/darkmode.js" -}}
-  {{ $darkMode := $darkMode | js.Build -}}
+  {{ $darkMode = resources.Get "js/darkmode.js" -}}
+  {{ $darkMode = $darkMode | js.Build -}}
   {{ $slice = $slice | append $darkMode -}}
 {{ end -}}
 
+{{ $alert := "" -}}
 {{ if and (.Site.Params.alert) (.Site.Params.alertDismissable) -}}
-  {{ $alert := resources.Get "js/alert.js" -}}
-  {{ $alert := $alert | js.Build -}}
+  {{ $alert = resources.Get "js/alert.js" -}}
+  {{ $alert = $alert | js.Build -}}
   {{ $slice = $slice | append $alert -}}
 {{ end -}}
 
+{{ $katexConfig := "" -}}
 {{ if .Site.Params.options.kaTex -}}
-  {{ $katexConfig := resources.Get "js/katex.js" -}}
-  {{ $katexConfig := $katexConfig | js.Build -}}
+  {{ $katexConfig = resources.Get "js/katex.js" -}}
+  {{ $katexConfig = $katexConfig | js.Build -}}
   {{ $slice = $slice | append $katexConfig -}}
 {{ end -}}
 
 {{ $scrollLock := resources.Get "js/scroll-lock.js" | js.Build -}}
 {{ $slice = $slice | append $scrollLock -}}
 
+{{ $toTopButton := "" -}}
 {{ if .Site.Params.options.toTopButton -}}
-  {{ $toTopButton := resources.Get "js/to-top.js" -}}
-  {{ $toTopButton := $toTopButton | js.Build -}}
+  {{ $toTopButton = resources.Get "js/to-top.js" -}}
+  {{ $toTopButton = $toTopButton | js.Build -}}
   {{ $slice = $slice | append $toTopButton -}}
 {{ end -}}
-
-{{ $js := $slice | resources.Concat "main.js" -}}
 
 {{ if eq (hugo.Environment) "development" -}}
   {{ if .Site.Params.options.bootStrapJs -}}
@@ -84,21 +92,45 @@
     <script src="{{ $katex.RelPermalink }}" defer></script>
     <script src="{{ $katexAutoRender.RelPermalink }}" onload="renderMathInElement(document.body);" defer></script>
   {{ end -}}
-  <script src="{{ $js.RelPermalink }}" defer></script>
+  {{ if .Site.Params.options.lazySizes -}}
+    <script src="{{ $lazySizes.RelPermalink }}" defer></script>
+  {{ end -}}
+  {{ if .Site.Params.options.clipBoard -}}
+    <script src="{{ $clipBoard.RelPermalink }}" defer></script>
+  {{ end -}}
+  {{ if .Site.Params.options.instantPage -}}
+    <script src="{{ $instantPage.RelPermalink }}" defer></script>
+  {{ end -}}
+  {{ if $showFlexSearch -}}
+    {{ $flexSearch := resources.Get "js/flexsearch.js" -}}
+    {{ if $flexSearch -}}
+      <script src="{{ $flexSearch.RelPermalink }}" defer></script>
+    {{ end -}}
+  {{ end -}}
+  {{ if .Site.Params.options.darkMode -}}
+    <script src="{{ $darkMode.RelPermalink }}" defer></script>
+  {{ end -}}
+  {{ if and (.Site.Params.alert) (.Site.Params.alertDismissable) -}}
+    <script src="{{ $alert.RelPermalink }}" defer></script>
+  {{ end -}}
+  {{ if .Site.Params.options.kaTex -}}
+    <script src="{{ $katexConfig.RelPermalink }}" defer></script>
+  {{ end -}}
+  <script src="{{ $scrollLock.RelPermalink }}" defer></script>
+  {{ if .Site.Params.options.toTopButton -}}
+    <script src="{{ $toTopButton.RelPermalink }}" defer></script>
+  {{ end -}}
+  <script src="{{ $index.RelPermalink }}" defer></script>
   {{ with .Params.mermaid -}}
     <script src="{{ $mermaid.RelPermalink }}" defer></script>
   {{ end -}}
-  {{ if $showFlexSearch -}}
-    <script src="{{ $index.RelPermalink }}" defer></script>
-  {{ end -}}
 {{ else -}}
-  {{ $js := $js | minify | fingerprint "sha512" -}}
-  {{ $index := $index | minify | fingerprint "sha512" -}}
-  {{ $bs := $bs | minify | fingerprint "sha512" -}}
-  {{ $highlight := $highlight | minify | fingerprint "sha512" -}}
-  {{ $katex := $katex | minify | fingerprint "sha512" -}}
-  {{ $katexAutoRender := $katexAutoRender | minify | fingerprint "sha512" -}}
-  {{ $mermaid := $mermaid | minify | fingerprint "sha512" -}}
+  {{ $index := $index | resources.Minify | fingerprint "sha512" -}}
+  {{ $bs := $bs | resources.Minify | fingerprint "sha512" -}}
+  {{ $highlight := $highlight | resources.Minify | fingerprint "sha512" -}}
+  {{ $katex := $katex | resources.Minify | fingerprint "sha512" -}}
+  {{ $katexAutoRender := $katexAutoRender | resources.Minify | fingerprint "sha512" -}}
+  {{ $mermaid := $mermaid | resources.Minify | fingerprint "sha512" -}}
   {{ if .Site.Params.options.bootStrapJs -}}
     <script src="{{ $bs.RelPermalink }}" integrity="{{ $bs.Data.Integrity }}" crossorigin="anonymous" defer></script>
   {{ end -}}
@@ -109,11 +141,45 @@
     <script src="{{ $katex.RelPermalink }}" integrity="{{ $katex.Data.Integrity }}" crossorigin="anonymous" defer></script>
     <script src="{{ $katexAutoRender.RelPermalink }}" integrity="{{ $katexAutoRender.Data.Integrity }}" crossorigin="anonymous" defer></script>
   {{ end -}}
-  <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" crossorigin="anonymous" defer></script>
-  {{ with .Params.mermaid -}}
-    <script src="{{ $mermaid.RelPermalink }}" integrity="{{ $mermaid.Data.Integrity }}" crossorigin="anonymous" defer></script>
+  {{ if .Site.Params.options.lazySizes -}}
+    {{ $lazySizes := $lazySizes | resources.Minify | fingerprint "sha512" -}}
+    <script src="{{ $lazySizes.RelPermalink }}" integrity="{{ $lazySizes.Data.Integrity }}" crossorigin="anonymous" defer></script>
+  {{ end -}}
+  {{ if .Site.Params.options.clipBoard -}}
+    {{ $clipBoard := $clipBoard | resources.Minify | fingerprint "sha512" -}}
+    <script src="{{ $clipBoard.RelPermalink }}" integrity="{{ $clipBoard.Data.Integrity }}" crossorigin="anonymous" defer></script>
+  {{ end -}}
+  {{ if .Site.Params.options.instantPage -}}
+    {{ $instantPage := $instantPage | resources.Minify | fingerprint "sha512" -}}
+    <script src="{{ $instantPage.RelPermalink }}" integrity="{{ $instantPage.Data.Integrity }}" crossorigin="anonymous" defer></script>
   {{ end -}}
   {{ if $showFlexSearch -}}
-    <script src="{{ $index.Permalink }}" integrity="{{ $index.Data.Integrity }}" crossorigin="anonymous" defer></script>
+    {{ $flexSearch := resources.Get "js/flexsearch.js" -}}
+    {{ if $flexSearch -}}
+      {{ $flexSearch := $flexSearch | resources.Minify | fingerprint "sha512" -}}
+      <script src="{{ $flexSearch.RelPermalink }}" integrity="{{ $flexSearch.Data.Integrity }}" crossorigin="anonymous" defer></script>
+    {{ end -}}
+  {{ end -}}
+  {{ if .Site.Params.options.darkMode -}}
+    {{ $darkMode := $darkMode | resources.Minify | fingerprint "sha512" -}}
+    <script src="{{ $darkMode.RelPermalink }}" integrity="{{ $darkMode.Data.Integrity }}" crossorigin="anonymous" defer></script>
+  {{ end -}}
+  {{ if and (.Site.Params.alert) (.Site.Params.alertDismissable) -}}
+    {{ $alert := $alert | resources.Minify | fingerprint "sha512" -}}
+    <script src="{{ $alert.RelPermalink }}" integrity="{{ $alert.Data.Integrity }}" crossorigin="anonymous" defer></script>
+  {{ end -}}
+  {{ if .Site.Params.options.kaTex -}}
+    {{ $katexConfig := $katexConfig | resources.Minify | fingerprint "sha512" -}}
+    <script src="{{ $katexConfig.RelPermalink }}" integrity="{{ $katexConfig.Data.Integrity }}" crossorigin="anonymous" defer></script>
+  {{ end -}}
+  {{ $scrollLock := $scrollLock | resources.Minify | fingerprint "sha512" -}}
+  <script src="{{ $scrollLock.RelPermalink }}" integrity="{{ $scrollLock.Data.Integrity }}" crossorigin="anonymous" defer></script>
+  {{ if .Site.Params.options.toTopButton -}}
+    {{ $toTopButton := $toTopButton | resources.Minify | fingerprint "sha512" -}}
+    <script src="{{ $toTopButton.RelPermalink }}" integrity="{{ $toTopButton.Data.Integrity }}" crossorigin="anonymous" defer></script>
+  {{ end -}}
+  <script src="{{ $index.RelPermalink }}" integrity="{{ $index.Data.Integrity }}" crossorigin="anonymous" defer></script>
+  {{ with .Params.mermaid -}}
+    <script src="{{ $mermaid.RelPermalink }}" integrity="{{ $mermaid.Data.Integrity }}" crossorigin="anonymous" defer></script>
   {{ end -}}
 {{ end -}}

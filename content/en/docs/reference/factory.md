@@ -10,7 +10,7 @@ It uses the pre-stored pair contract binary and instantiates it so that users ca
 
 ### Create pair
 
-Instantiate a pair from uploaded WASM binary. You may follow JSON attribute by the type of your asset. (CW20: `token`, Native/IBC: `native_token`)
+Instantiate a pair from uploaded WASM binary. You may follow JSON attribute by the type of your asset. (CW20: `token`, Denominator/IBC/ERC20: `native_token`)
 
 ```json
 {
