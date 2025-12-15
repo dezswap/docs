@@ -21,4 +21,5 @@ This guide shows you how to get started enjoying DEX using Dezswap, including ad
 | 📈 Want to create your own token?                             | [Mint your own token]({{< relref "/docs/integration/mint-your-own-token" >}}) |
 | 🤖 Do you build a bot to integrate with the Dezswap contract? | [Reference]({{< relref "/docs/reference" >}}) |
 | 🚀 Looking for listing your own token?                        | [Create your own pair]({{< relref "/docs/integration/create-your-own-pair" >}}) |
+| 🛠️ Want to use TypeScript SDK?                                | [SDK]({{< relref "/docs/integration/sdk" >}}) |
 
