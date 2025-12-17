@@ -23,6 +23,8 @@ pnpm add @dezswap/sdk
 
 ## Quick Start
 
+The SDK provides two main clients: `DezswapQueryClient` for read-only queries and `DezswapClient` for signing and broadcasting transactions.
+
 ### Query Data
 
 ```typescript
@@ -41,6 +43,8 @@ const pools = await client.pools({ limit: 10 })
 ```
 
 ### Execute Transactions
+
+To execute transactions, create a `DezswapClient` with a signer. The signing client wraps the query client and adds transaction capabilities.
 
 ```typescript
 import { DezswapClient, DezswapQueryClient, MAINNET_CONFIG } from '@dezswap/sdk'
@@ -64,6 +68,8 @@ const result = await signingClient.swap({
     gas: '500000'
   }
 })
+
+await result.wait()
 ```
 
 ## Network Configurations

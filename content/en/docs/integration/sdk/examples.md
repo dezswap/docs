@@ -7,6 +7,8 @@ This page provides practical code examples for common Dezswap SDK use cases.
 
 ## Basic Swap
 
+A simple swap using the high-level `swap()` method. The SDK handles message construction and fund attachment automatically.
+
 ```typescript
 import { DezswapClient, DezswapQueryClient, MAINNET_CONFIG } from '@dezswap/sdk'
 import { DirectSigner } from '@interchainjs/cosmos'
@@ -26,7 +28,7 @@ async function executeBasicSwap(directSigner: DirectSigner) {
     offerAsset: 'axpla',
     fee: {
       amount: [{ denom: 'axpla', amount: '10000' }],
-      gas: '5000000',
+      gas: '500000',
     },
   })
 
@@ -36,7 +38,7 @@ async function executeBasicSwap(directSigner: DirectSigner) {
 
 ## Message Composer
 
-For more control over the transaction message, use `DezswapPairMsgComposer`.
+For more control over the transaction message, use `DezswapPairMsgComposer`. This is useful when you need to batch multiple messages or customize the swap parameters.
 
 ```typescript
 import {
@@ -76,7 +78,7 @@ async function signSwapTransaction(directSigner: DirectSigner) {
     messages: [swapMsg],
     fee: {
       amount: [{ denom: 'axpla', amount: '5000' }],
-      gas: '5000000',
+      gas: '500000',
     },
     options: { signerAddress },
   })
@@ -85,7 +87,7 @@ async function signSwapTransaction(directSigner: DirectSigner) {
 
 ## Pool Analytics
 
-Requires API endpoint to be configured. `MAINNET_CONFIG` includes API endpoint by default.
+Fetch pool data with market metrics. Requires API endpoint to be configured. `MAINNET_CONFIG` includes API endpoint by default.
 
 ```typescript
 import { DezswapQueryClient, MAINNET_CONFIG } from '@dezswap/sdk'
@@ -110,15 +112,18 @@ Response includes:
   address: string,
   assets: [Asset, Asset],
   total_share: string,
-  apr: number,  // with API
-  tvl: string,  // with API
-  volume: string,  // with API
-  fee: string,  // with API
-  priceRatio: PriceRatio  // with API
+  // only returned when calling client.pools({ detail: true }) with API endpoint configured
+  apr?: number,
+  fee?: string,
+  tvl?: string,
+  volume?: string,
+  priceRatio?: PriceRatio
 }
 ```
 
 ## Find Trading Pairs
+
+Find all pairs that include a specific token. Useful for building token selection UIs or discovering liquidity.
 
 ```typescript
 async function findTradingPairs(tokenAddress: string) {
@@ -142,7 +147,7 @@ async function findTradingPairs(tokenAddress: string) {
 
 ## Contract-Only Mode
 
-Without API endpoint, the SDK uses direct contract queries. Faster initialization but no market data.
+Without API endpoint, the SDK uses direct contract queries. Faster initialization but no market data. Useful for backend services that only need on-chain data.
 
 ```typescript
 async function contractOnlyQuery() {

@@ -9,7 +9,7 @@ For executing swaps via CLI, please refer to the [Swap]({{< relref "/docs/integr
 
 ## Creating a Signer
 
-`DezswapClient` requires a `DirectSigner` from `@interchainjs/cosmos`. Here's how to create one:
+`DezswapClient` requires a `DirectSigner` from `@interchainjs/cosmos`. The signer holds your private key and signs transactions before broadcasting. Here's how to create one:
 
 ### From Mnemonic
 
@@ -45,7 +45,7 @@ const signingClient = await DezswapClient.create(directSigner, queryClient)
 
 ### sign
 
-Sign a transaction without broadcasting.
+Sign a transaction without broadcasting. Use this when you need to inspect or store the signed transaction before sending it to the network.
 
 ```typescript
 const signed = await signingClient.sign({
@@ -63,7 +63,7 @@ Returns `CosmosSignedTransaction`. See [SignInput]({{< relref "/docs/integration
 
 ### broadcast
 
-Broadcast a signed transaction.
+Broadcast a signed transaction. The returned `wait()` function polls the chain until the transaction is included in a block.
 
 ```typescript
 const result = await signingClient.broadcast({
@@ -76,7 +76,7 @@ Returns `{ transactionHash: string, wait: () => Promise<{ code: number, rawLog?:
 
 ### swap
 
-Execute a token swap. The SDK automatically generates `funds` based on the offer asset type.
+Execute a token swap. The SDK automatically generates the correct message format and `funds` based on the offer asset type.
 
 - **Native tokens** (like `axpla`): Automatically attaches the specified amount as funds
 - **CW20 tokens** (addresses starting with `xpla1...`): Uses CW20 send method with swap hook
@@ -112,7 +112,7 @@ Pay transaction fees using CW20 or native token (including IBC tokens) instead o
 
 ### createMsgWithFeeToken
 
-Converts your token to XPLA via router swap for gas fee payment.
+Converts your token to XPLA via router swap for gas fee payment. This prepends a swap message to your transaction, so the converted XPLA covers the gas cost.
 
 - `fee.address`: Token to use for fee payment (CW20 address or native denom)
 - `fee.amount`: Amount of the token to swap for XPLA gas fees (in smallest unit)

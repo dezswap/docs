@@ -7,9 +7,11 @@ TypeScript type definitions used throughout the SDK.
 
 ## Asset Types
 
+These types represent tokens and amounts used throughout the SDK.
+
 ### AssetInfo
 
-Asset identifier for native tokens or CW20 tokens.
+Asset identifier for native tokens or CW20 tokens. The SDK uses this discriminated union to handle both token types uniformly.
 
 ```typescript
 type AssetInfo =
@@ -19,6 +21,8 @@ type AssetInfo =
 
 ### Asset
 
+Combines asset identifier with an amount. All amounts are strings to preserve precision for large numbers.
+
 ```typescript
 interface Asset {
   info: AssetInfo
@@ -27,6 +31,8 @@ interface Asset {
 ```
 
 ### TokenInfo
+
+CW20 token metadata returned by `client.tokens()`.
 
 ```typescript
 interface TokenInfo {
@@ -41,6 +47,8 @@ interface TokenInfo {
 
 ### NativeTokenInfo
 
+Native token metadata returned by `client.tokens()`. Decimals come from the SDK's internal registry.
+
 ```typescript
 interface NativeTokenInfo {
   denom: string
@@ -52,6 +60,8 @@ interface NativeTokenInfo {
 ```
 
 ## Pool Types
+
+These types represent liquidity pool information and pair configurations.
 
 ### PoolInfo
 
@@ -71,6 +81,8 @@ interface PoolInfo {
 
 ### PriceRatio
 
+Price information for a pool, expressing how much of the currency asset equals one base asset.
+
 ```typescript
 interface PriceRatio {
   base: string  // base asset identifier
@@ -80,6 +92,8 @@ interface PriceRatio {
 ```
 
 ### PairInfo
+
+Pair contract information including the LP token address and asset decimals.
 
 ```typescript
 interface PairInfo {
@@ -92,6 +106,8 @@ interface PairInfo {
 
 ## Router Types
 
+These types represent swap routes and operations for multi-hop trading.
+
 ### Route
 
 ```typescript
@@ -102,6 +118,8 @@ interface Route {
 ```
 
 ### SwapOperation
+
+A single swap step in a route. Multiple operations form a multi-hop path.
 
 ```typescript
 type SwapOperation = {
@@ -114,6 +132,8 @@ type SwapOperation = {
 
 ### OptimalRouteResult
 
+Result from `findOptimalRoute()` including the best route and simulation results.
+
 ```typescript
 interface OptimalRouteResult {
   routes: SwapOperation[]
@@ -125,6 +145,8 @@ interface OptimalRouteResult {
 ```
 
 ## Configuration Types
+
+SDK configuration and contract addresses.
 
 ### Config
 
@@ -145,6 +167,8 @@ interface Config {
 
 ## Transaction Types
 
+Input types for signing and broadcasting transactions.
+
 ### SwapInput
 
 ```typescript
@@ -163,6 +187,8 @@ interface SwapInput {
 
 ### SignInput
 
+Input for the `sign()` method. Use `'auto'` fee to let the SDK estimate gas.
+
 ```typescript
 interface SignInput {
   messages: any[]
@@ -175,6 +201,8 @@ interface SignInput {
 ```
 
 ### BroadcastInput
+
+Input for the `broadcast()` method. The mode determines when the call returns.
 
 ```typescript
 interface BroadcastInput {

@@ -32,7 +32,7 @@ const customClient = await DezswapQueryClient.connectWithConfig(rpcUrl, {
 
 ### tokens
 
-Get all tokens registered in the DEX.
+Get all tokens registered in the DEX. The SDK caches token data internally, so subsequent calls with `refresh: false` return cached data without network requests.
 
 ```typescript
 const { natives, tokens } = await client.tokens({
@@ -55,7 +55,7 @@ Returns `{ natives: NativeTokenInfo[], tokens: TokenInfo[] }`. See [NativeTokenI
 
 ### nativeTokenDecimals
 
-Get decimal places for a native token.
+Get decimal places for a native token. Native tokens like `axpla` or IBC tokens don't have on-chain metadata, so the SDK maintains a registry of known decimals.
 
 ```typescript
 const nativeInfo = await client.nativeTokenDecimals({ denom: 'axpla' })
@@ -67,7 +67,7 @@ Returns `{ decimals: number }`.
 
 ### pools
 
-Get all liquidity pools.
+Get all liquidity pools. When `detail: true` is set and an API endpoint is configured, the response includes market data like APR, TVL, and volume.
 
 ```typescript
 const pools = await client.pools({
@@ -84,7 +84,7 @@ Returns [PoolInfo]({{< relref "/docs/integration/sdk/types#poolinfo" >}})`[]`.
 
 ### pair
 
-Get specific pair information.
+Get specific pair information. The asset order doesn't matter - the SDK normalizes the query internally.
 
 ```typescript
 const pairInfo = await client.pair(
@@ -97,7 +97,7 @@ Returns [PairInfo]({{< relref "/docs/integration/sdk/types#pairinfo" >}}).
 
 ### pairs
 
-Get all pairs.
+Get all pairs. Use `startAfter` with the last pair's `asset_infos` for pagination through large datasets.
 
 ```typescript
 const pairs = await client.pairs({
@@ -115,7 +115,7 @@ Returns [PairInfo]({{< relref "/docs/integration/sdk/types#pairinfo" >}})`[]`.
 
 ### findRoutes
 
-Find all possible routes between two assets.
+Find all possible routes between two assets. The SDK uses a graph-based algorithm to discover multi-hop paths through intermediate tokens.
 
 ```typescript
 const routes = await client.findRoutes({
@@ -129,7 +129,7 @@ Returns [Route]({{< relref "/docs/integration/sdk/types#route" >}})`[]`. See [Sw
 
 ### findOptimalRoute
 
-Find the route with best expected output.
+Find the route with best expected output. The SDK simulates all discovered routes in parallel and returns the one with the highest output amount.
 
 ```typescript
 const optimal = await client.findOptimalRoute({
@@ -147,7 +147,7 @@ Returns [OptimalRouteResult]({{< relref "/docs/integration/sdk/types#optimalrout
 
 ### simulateSwapOperations
 
-Simulate swap to get expected output.
+Simulate swap to get expected output. This queries the router contract to calculate the final amount after all hops and fees.
 
 - `offerAmount`: Amount of the first operation's `offer_asset_info` token (in smallest unit)
 - `operations`: Swap path from `findRoutes()` or `findOptimalRoute()`
@@ -163,7 +163,7 @@ Returns `{ amount: string }` (expected amount of the last operation's `ask_asset
 
 ### reverseSimulateSwapOperations
 
-Find required input for desired output.
+Find required input for desired output. Useful when users want to receive an exact amount of the target token.
 
 - `askAmount`: Desired amount of the last operation's `ask_asset_info` token (in smallest unit)
 - `operations`: Swap path from `findRoutes()` or `findOptimalRoute()`
